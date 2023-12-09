@@ -2,4 +2,447 @@
 
 .page {
   /* сохраните в разметке и стилях класс page. На его основе работает скрипт. */
+  font-family: var(--main-font);
+  background-color: var(--bg-color);
+  background-image: var(--bg-image);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  font-weight: 400;
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  inline-size: 100%;
+  block-size: 100%;
 }
+
+.header {
+  /*только на хедер*/
+  position: relative;
+  min-height: 100vh;
+  inline-size: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr auto 1fr;
+  align-items: center;
+  padding: 10px;
+  margin-block-end: 40px;
+}
+
+.decorated-zone::before {
+  /*псевдоэлемент рамки*/
+  content: '';
+  position: absolute;
+  inline-size: 25px;
+  block-size: 25px;
+  border-block-start: 1px solid var(--border-color);
+  border-inline-end: 1px solid var(--border-color);
+  top: 10px;
+  right: 10px;
+}
+
+.decorated-zone::after {
+  /*псевдоэлемент рамки*/
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  border-block-end: 1px solid var(--border-color);
+  border-inline-start: 1px solid var(--border-color);
+  bottom: 10px;
+  left: 10px;
+}
+
+.decorated-text {
+  /*Rec*/
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: var(--border-color);
+  text-transform: uppercase;
+}
+
+.decorated-text::after {
+  /*розовый круг*/
+  content: '';
+  display: inline-block;
+  background-color: var(--border-color);
+  box-shadow: 0 0 4px 2px var(--border-color);
+  inline-size: 9px;
+  block-size: 9px;
+  border-radius: 50%;
+  margin-inline: 9px;
+  margin-block-end: 2px;
+}
+
+.header__theme-menu {
+  /*навигация где кнопки*/
+  justify-self: end;
+  grid-column: 1 / 3;
+  grid-row: 1 / 2;
+  margin-block-start: 56px;
+  margin-block-end: 62px;
+}
+
+.header__theme-menu-list {
+  /*список с кнопками*/
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.header__theme-menu-button {
+  /*кнопка*/
+  color: var(--button-color);
+  background-color: transparent;
+  border: 1px solid transparent;
+  text-transform: lowercase;
+  cursor: pointer;
+  font-family: IBM Plex Mono;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 23.4px;
+  /* 130% */
+  padding: 0px 13px;
+}
+
+.header__theme-menu-button:hover {
+  /*сама кнопка*/
+  cursor: pointer;
+  outline: 1px solid var(--button-color);
+  padding: 0 13px;
+}
+
+.header__theme-menu-button:focus {
+  /*сама кнопка*/
+  outline: none;
+}
+
+.header__theme-menu-button:focus-visible {
+  /*сама кнопка*/
+  border-bottom: 1px solid var(--button-color);
+  outline: none;
+}
+
+.header__theme-menu-button_active {
+  /*сама кнопка*/
+  outline: 1px solid var(--button-color);
+  pointer-events: none;
+  padding: 0 13px;
+}
+
+.header__title {
+  /*no focus вверху */
+  text-shadow: 4px 4px 0px var(--shadow-color);
+  grid-column: 1 / 3;
+  grid-row: 2 / 3;
+}
+
+.header__text {
+  /*Что делать, когда не можешь делать ничего*/
+  grid-column: 1 / 3;
+  grid-row: 3 / 4;
+}
+
+.page__title {
+  /*no focus*/
+  color: var(--title-color);
+  font-family: 'IBM Plex mono';
+  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  font-style: normal;
+  font-weight: 700;
+  line-height: 82.5%;
+  padding: 0;
+  margin: 0;
+}
+
+.title-decor {
+  /*все заголовки на розовом фоне даже в последнем секции*/
+  background-color: var(--title);
+  font-weight: 700;
+  color: var(--title-text);
+  font-family: var(--main-font);
+  font-size: 18px;
+  font-style: normal;
+  line-height: 1.3;
+}
+
+.main {
+  /*вся часть с секциями*/
+  display: grid;
+  padding: 0 10px;
+  margin-block-end: 40px;
+}
+
+.section {
+  /*каждый контейнер <section class=>*/
+  display: grid;
+}
+
+.section:not(:last-child) {
+  margin-block-end: 50px;
+}
+
+.section__title {
+  /*h2 очему сосредоточиться так сложно*/
+  color: var(--accent-color);
+  font-size: 18px;
+  margin-block-end: 20px;
+}
+
+.section__text {
+  /*див с секциями*/
+  display: flex;
+  flex-direction: column;
+}
+
+.section__text__title {
+  /*h3 Многозадачность*/
+  margin-block-end: 10px;
+}
+
+.section__text__paragraph {
+  /*параграф с описанием h*/
+  color: var(--text-color);
+  font-family: IBM Plex Mono;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 23.4px;  /* 130% */
+}
+
+.section__text__paragraph:not(:last-child) {
+  margin-block-end: 20px;
+}
+
+.section-factor-card:not(:last-child) {
+  margin-block-end: 20px;
+}
+
+.section-advice_list {
+  /*секция с советами, где подзаголовки*/
+  font-weight: 400;
+  color: var(--title-text);
+  background-color: var(--title);
+  margin-block-start: 10px;
+  margin-block-end: 10px;
+}
+
+.section__link {
+  text-decoration: none;
+  text-shadow: 2px 1px 0 var(--link);
+}
+
+.section__link:hover {
+  /*ссылки с подчеркиванием*/
+  border-block-end: 1px solid var(--link);
+}
+
+.section__link:focus {
+  /*ссылки с подчеркиванием*/
+  outline: none;
+}
+
+.section__link:focus-visible {
+  /*ссылки с подчеркиванием*/
+  outline: 1px solid var(--link);
+}
+
+.advice:not(:last-child) {
+  margin-block-end: 10px;
+}
+
+.section-image .section__text__title {
+  margin: 0;
+}
+
+.section-image {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.section-image__image {
+  inline-size: 100%;
+  object-fit: contain;
+  object-position: center;
+  vertical-align: bottom;
+}
+
+.footer {
+  position: relative;
+  padding: 10px;
+  display: grid;
+  block-size: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer__title {
+  text-align: center;
+  justify-self: center;
+  align-self: center;
+  text-shadow: 2px 2px 0px var(--shadow-color);
+}
+
+
+@media (width >=768px) {
+  .header {
+    /*только на хедер*/
+    padding: 20px;
+    margin-block-end: 60px;
+  }
+
+  .decorated-zone::before {
+    /*псевдоэлемент рамки*/
+    top: 20px;
+    right: 22px;
+  }
+
+  .decorated-zone::after {
+    /*псевдоэлемент рамки*/
+    bottom: 20px;
+    left: 22px;
+  }
+
+  .decorated-text {
+    /*Rec*/
+    top: 21px;
+    right: 23px;
+  }
+
+  .header__theme-menu-list {
+    /*список с кнопками*/
+    gap: 11px;
+  }
+
+  .header__title {
+    /*no focus вверху */
+    margin-inline-start: -20px;
+  }
+
+  .header__text {
+    /*Что делать, когда не можешь делать ничего*/
+    grid-column: 2;
+  }
+
+  .page__title {
+    /*no focus*/
+    font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+  }
+
+  .main {
+    /*вся часть с секциями*/
+    padding: 0 20px;
+    margin-block-end: 60px;
+  }
+
+  .section {
+    /*каждый контейнер <section class=>*/
+    grid-template-columns: 35% 1fr;
+  }
+
+  .section:not(:last-child) {
+    margin-block-end: 80px;
+  }
+
+  .section__title {
+    /*h2 очему сосредоточиться так сложно*/
+    margin-inline-end: 18px;
+  }
+
+  .section-factor .section__title {
+    grid-column: 1/2;
+    grid-row: 1/2;
+  }
+
+  .section-factor .section__text {
+    grid-column: 1/-1;
+    grid-row: 2 span;
+  }
+
+  .section-image {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .section__text__title {
+    grid-column: 1/-1;
+  }
+
+  .section-image__image:first-of-type {
+    grid-column: span 2;
+  }
+
+  .section-image__image:nth-of-type(2) {
+    grid-row: span 2;
+  }
+
+  .section-image__image:nth-of-type(3) {
+    grid-row: span 2;
+  }
+
+  .section-image__image:last-of-type {
+    grid-column: span 2;
+  }
+
+  .section-image__image {
+    block-size: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+}
+
+@media (width >=1024px) {
+  .header__theme-menu {
+    justify-self: center;
+    align-self: start;
+    margin: 0;
+  }
+
+  .header__theme-menu-list {
+    /*список с кнопками*/
+    flex-direction: row;
+  }
+
+
+  .section {
+    /*каждый контейнер <section class=>*/
+    grid-template-columns: 34% 1fr;
+  }
+
+  .section-image {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+
+  }
+  .section-factor {
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 20px;
+  }
+
+  .section-factor-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .section-factor-card:nth-child(2) {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+  }
+  .section-factor-card:nth-child(3) {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+  }
+  .section-factor-card:nth-child(4) {
+    grid-column: 3 / 4;
+    grid-row: 2 / 3;
+  }
+
+}
+
